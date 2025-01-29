@@ -1,6 +1,10 @@
 import { MongoClient } from "mongodb";
-//deno add npm:@apollo/server
-//deno add npm:graphql
+import { ApolloServer } from "@apollo/server";
+import { startStandaloneServer } from "npm:@apollo/server/standalone";
+import { schema } from "./schema.ts";
+import { resolvers } from "./resolvers.ts";
+
+
 const MONGO_URL = Deno.env.get("MONGO_URL");
 if (!MONGO_URL) {throw new Error("Mongo URL not found")};
 
@@ -12,6 +16,7 @@ const db = Client.db("Ordinaria");
 //const testCollection = db.collection<TestModel>("test");
 
 //APIREST
+/*
 const handler = async (req: Request): Promise<Response> => {
   const method = req.method;
   const url = new URL(req.url);
@@ -32,15 +37,15 @@ const handler = async (req: Request): Promise<Response> => {
 }
 
 Deno.serve({port:3000}, handler);
+*/
+
+//GRAPHQL
 
 
-//
 
-
-/*
 const server = new ApolloServer({typeDefs: schema, resolvers,});
 const { url } = await startStandaloneServer(server, {
-  context: async () => (await { Collection }),
+  context: async () => (await {  }),
   listen: { port: 8080 }
 });
-console.info(`Server ready at ${url}`);*/
+console.info(`Server ready at ${url}`);
