@@ -36,7 +36,7 @@ const handler = async (req: Request): Promise<Response> => {
   return new Response("Endpoint not found", {status: 404});
 }
 
-Deno.serve({port:3000}, handler);
+Deno.serve({port:8080}, handler);
 */
 
 //GRAPHQL

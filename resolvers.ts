@@ -1,7 +1,7 @@
 
 export const resolvers = {
     Query: {
-        getTest:(): string => {
+        getTest:(_:unknown): string => {
             return "Hola"
         }
     },
