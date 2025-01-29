@@ -1,5 +1,5 @@
 import { MongoClient } from "mongodb";
-//deno add npm:@apolloserver
+//deno add npm:@apollo/server
 //deno add npm:graphql
 const MONGO_URL = Deno.env.get("MONGO_URL");
 if (!MONGO_URL) {throw new Error("Mongo URL not found")};
@@ -8,17 +8,19 @@ const Client = new MongoClient(MONGO_URL);
 await Client.connect();
 console.info("Client connected");
 
-const db = Client.db("Ordinaria"); 
+const db = Client.db("Ordinaria");
+//const testCollection = db.collection<TestModel>("test");
 
 //APIREST
-/*
 const handler = async (req: Request): Promise<Response> => {
   const method = req.method;
   const url = new URL(req.url);
   const path = url.pathname;
 
   if(method === "GET"){
-    
+    if(path=== "/test"){
+      return new Response(JSON.stringify("Hola"),{status:200});
+    }
   }else if(method === "POST"){
 
   }else if(method === "PUT"){
@@ -30,7 +32,7 @@ const handler = async (req: Request): Promise<Response> => {
 }
 
 Deno.serve({port:3000}, handler);
-*/
+
 
 //
 
